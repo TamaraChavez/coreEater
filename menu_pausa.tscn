@@ -1,34 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://c18jtyxwkeia"]
+[gd_scene load_steps=8 format=3 uid="uid://c18jtyxwkeia"]
 
 [ext_resource type="Texture2D" uid="uid://bnbo6yik7e5vv" path="res://fondo/planet_example.png" id="1_60lbn"]
+[ext_resource type="Script" path="res://menu_pausa.gd" id="1_ev30q"]
+[ext_resource type="Script" path="res://texture_rect.gd" id="3_jwbnw"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_awns1"]
+
+[sub_resource type="Animation" id="Animation_lgiq8"]
+resource_name = "FondoMenuPausa"
+
+[sub_resource type="Animation" id="Animation_ubnss"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oie64"]
+_data = {
+"FondoMenuPausa": SubResource("Animation_lgiq8"),
+"RESET": SubResource("Animation_ubnss")
+}
 
 [node name="MenuPausa" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -1305.0
+offset_top = 107.0
+offset_right = -1265.0
+offset_bottom = 147.0
+script = ExtResource("1_ev30q")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_direction = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -683.0
-offset_top = -384.0
-offset_right = 683.0
-offset_bottom = 384.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 1158.0
+offset_top = -182.0
+offset_right = 2524.0
+offset_bottom = 586.0
 texture = ExtResource("1_60lbn")
+stretch_mode = 2
+script = ExtResource("3_jwbnw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(55, 25)
 layout_mode = 1
-offset_right = 84.0
-offset_bottom = 66.0
+offset_left = 1792.0
+offset_top = 152.0
+offset_right = 1881.0
+offset_bottom = 218.0
 alignment = 1
 
 [node name="Button" type="Button" parent="VBoxContainer"]
@@ -42,4 +58,10 @@ layout_mode = 2
 text = "Salir"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oie64")
+}
 speed_scale = 1.537
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

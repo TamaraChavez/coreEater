@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="coreEater"
+run/main_scene="res://menu_pausa.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor]
 
