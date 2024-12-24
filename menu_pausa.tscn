@@ -8,9 +8,35 @@
 
 [sub_resource type="Animation" id="Animation_lgiq8"]
 resource_name = "FondoMenuPausa"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.166667, 0.6, 1, 1.73772),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1142, -211), Vector2(1134, -211), Vector2(1131, -192), Vector2(1189, -169)]
+}
 
 [sub_resource type="Animation" id="Animation_ubnss"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1142, -211)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oie64"]
 _data = {
@@ -28,12 +54,13 @@ offset_bottom = 147.0
 script = ExtResource("1_ev30q")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_direction = 1
+clip_contents = true
 layout_mode = 1
-offset_left = 1158.0
-offset_top = -182.0
-offset_right = 2524.0
-offset_bottom = 586.0
+offset_left = 1142.0
+offset_top = -211.0
+offset_right = 2508.0
+offset_bottom = 557.0
+scale = Vector2(1.00321, 1.04653)
 texture = ExtResource("1_60lbn")
 stretch_mode = 2
 script = ExtResource("3_jwbnw")
