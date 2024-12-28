@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://xd2ggxk8mhi"]
+
+[ext_resource type="Texture2D" uid="uid://cct1ji174k5ki" path="res://assets/taladro2.png" id="1_a46lu"]
+
+[sub_resource type="GDScript" id="GDScript_t2ftw"]
+resource_name = "jugador.gd"
+script/source = "extends CharacterBody2D
+
+# Propiedades del jugador
+@export var drill_damage: int = 2             # Daño que hace el taladro
+@export var gravity_strength: float = 200.0   # Fuerza gravitatoria
+
+var current_gravity_center: Vector2 = Vector2.ZERO
+var gravity_enabled: bool = false
+
+func _physics_process(delta):
+	# Aplicar gravedad si está habilitada
+	if gravity_enabled:
+		var direction = (current_gravity_center - position).normalized()
+		velocity += direction * gravity_strength * delta
+
+	# Llama a move_and_slide() sin argumentos para aplicar la velocidad
+	move_and_slide()
+
+# Manejo de entrada al área de gravedad
+func _on_GravityArea_body_entered(body):
+	if body.is_in_group(\"planet\"):
+		current_gravity_center = body.global_position
+		gravity_enabled = true
+
+# Manejo de salida del área de gravedad
+func _on_GravityArea_body_exited(body):
+	if body.is_in_group(\"planet\"):
+		gravity_enabled = false
+
+# Manejo de entrada al área del taladro
+func _on_DrillArea_body_entered(body):
+	# Si el taladro entra en contacto con un bloque, aplica daño
+	if body is StaticBody2D and body.has_method(\"take_damage\"):
+		body.take_damage(drill_damage)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_insnc"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = SubResource("GDScript_t2ftw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_a46lu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_insnc")
