@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://xjfi4uqtidok"]
+
+[ext_resource type="PackedScene" uid="uid://djugeogw31l3r" path="res://planeta_1.tscn" id="1_26pub"]
+[ext_resource type="PackedScene" uid="uid://xd2ggxk8mhi" path="res://taladro.tscn" id="2_y1qo0"]
+
+[node name="Area 1" type="Node2D"]
+
+[node name="Planeta" parent="." instance=ExtResource("1_26pub")]
+scale = Vector2(8.60888, 8.34756)
+
+[node name="Taladro" parent="." instance=ExtResource("2_y1qo0")]
+position = Vector2(-1, -356)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, -81)

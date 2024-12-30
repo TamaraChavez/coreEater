@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://djugeogw31l3r"]
+
+[ext_resource type="Script" path="res://gravedad.gd" id="1_xcaa0"]
+[ext_resource type="PackedScene" uid="uid://drshk7e4qc0x1" path="res://bloque_tierra.tscn" id="2_ganql"]
+[ext_resource type="PackedScene" uid="uid://da0tgbu24rh2t" path="res://bloque_piedra.tscn" id="3_d1oc7"]
+[ext_resource type="PackedScene" uid="uid://b52p68ba1igus" path="res://bloque_piedra_carbon.tscn" id="4_kv82t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_glues"]
+radius = 12.7779
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xcaa0")
+gravity_radius = 200.0
+blocks_per_layer = [2, 3, 4]
+radii = Array[int]([1, 2, 3])
+block_scenes = [ExtResource("2_ganql"), ExtResource("3_d1oc7"), ExtResource("4_kv82t")]
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1.64346, 1.64382)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_glues")

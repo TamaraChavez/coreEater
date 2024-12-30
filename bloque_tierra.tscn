@@ -1,0 +1,19 @@
+[gd_scene load_steps=7 format=3 uid="uid://drshk7e4qc0x1"]
+
+[ext_resource type="Script" path="res://piedra.gd" id="1_sf1ud"]
+[ext_resource type="Texture2D" uid="uid://dop62auvrys24" path="res://assets/tierra/tierra01.png" id="2_bvosw"]
+[ext_resource type="Texture2D" uid="uid://bwe8dl4dgmb7d" path="res://assets/tierra/tierra02.png" id="3_bj0gs"]
+[ext_resource type="Texture2D" uid="uid://ypd60rmfkf31" path="res://assets/tierra/tierra03.png" id="4_tq2kk"]
+[ext_resource type="Texture2D" uid="uid://d4kyynqduuti6" path="res://assets/tierra/tierra04.png" id="5_8cgx4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vyl72"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_sf1ud")
+material_to_add = Array[String](["Piedra"])
+sprites = Array[Texture2D]([ExtResource("2_bvosw"), ExtResource("3_bj0gs"), ExtResource("4_tq2kk"), ExtResource("5_8cgx4")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vyl72")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
